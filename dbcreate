@@ -1,0 +1,33 @@
+CREATE TABLE `lot` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+	`text` TEXT NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+	`time` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+	`price` FLOAT NULL DEFAULT NULL,
+	`step` INT(11) NULL DEFAULT NULL,
+	`user_id` INT(11) NULL DEFAULT NULL,
+	`status` INT(1) NULL DEFAULT NULL,
+	`end_time` DATETIME NULL DEFAULT NULL,
+	`image` VARCHAR(250) NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+	`win_id` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+	PRIMARY KEY (`id`),
+	INDEX `FK_lot_users` (`user_id`),
+	CONSTRAINT `FK_lot_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE NO ACTION ON DELETE CASCADE
+)
+COLLATE='utf8mb4_unicode_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=109
+;
+
+
+CREATE TABLE `users` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`username` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+	`password` VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+	`email` VARCHAR(255) NULL DEFAULT NULL COLLATE 'utf8mb4_unicode_ci',
+	PRIMARY KEY (`id`)
+)
+COLLATE='utf8mb4_unicode_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=35
+;
